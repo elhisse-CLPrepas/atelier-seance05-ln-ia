@@ -1,0 +1,15 @@
+.metier-response{margin-top:24px;background:#fff;border:1px solid #dbe4ef;border-top:4px solid #ba904c;border-radius:16px;padding:clamp(18px,3vw,32px)}
+.metier-response-head{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.metier-response-head small{color:#856426;font-size:11px;letter-spacing:1.5px;font-weight:700}
+.metier-response-head h3{font-size:25px;margin:10px 0}
+.metier-notice{background:#edf2f8;border-left:3px solid #ba904c;padding:14px 18px;line-height:1.6;color:#244477}
+.metier-markdown{line-height:1.75;color:#243957;overflow-wrap:anywhere}
+.metier-markdown h3,.metier-markdown h4{color:#13254b;margin:27px 0 12px}
+.metier-markdown h4{font-size:19px}.metier-markdown p{margin:12px 0}
+.metier-markdown li{margin-bottom:7px}.metier-markdown a{color:#174e88;text-underline-offset:3px}
+.metier-table{max-width:100%;overflow-x:auto;margin:20px 0;border:1px solid #dbe4ef;border-radius:10px}
+.metier-table table{width:100%;border-collapse:collapse;font-size:14px;min-width:580px}
+.metier-table th{background:#102a57;color:#fff;text-align:left}
+.metier-table th,.metier-table td{padding:13px 15px;vertical-align:top;border-bottom:1px solid #dbe4ef}
+.metier-table tr:last-child td{border-bottom:0}.metier-table tbody tr:nth-child(even){background:#f5f7fb}
+.metier-table:focus-visible{outline:3px solid #ba904c;outline-offset:3px}

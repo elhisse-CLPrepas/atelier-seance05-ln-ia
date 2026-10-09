@@ -33,6 +33,7 @@ Apprendre à transformer une demande vague en prompt structuré : **Rôle + Cont
 - Galerie des quatre affiches avec agrandissement, lecture en taille réelle et téléchargement PNG.
 - Six fiches détaillées (anti-exemple, exemple, conseil).
 - Quatre cas professionnels (formateur, entrepreneur, manager, comptable).
+- Réponses pédagogiques intégrées aux quatre onglets métier, avec tableaux, points de contrôle et téléchargement Markdown. Les fichiers de `03-reponses-prompts-metiers/` alimentent directement le site lors de la compilation.
 - Deux prompts à copier pour une démonstration dans une IA externe (aucun appel IA direct).
 - Huit flashcards interactives.
 - Générateur local de prompt et téléchargement du fichier Markdown V1.
