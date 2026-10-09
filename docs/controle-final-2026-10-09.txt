@@ -1,0 +1,33 @@
+CONTRÔLE DE L'ATELIER — 09 OCTOBRE 2026
+
+Périmètre : code, README, supports référencés, permissions GitHub Actions
+et compilation destinée à GitHub Pages.
+
+Résultats :
+- npm audit : aucune vulnérabilité signalée.
+- Syntaxe des trois modules JavaScript : vérifiée.
+- Compilation avec /atelier-seance05-ln-ia/ : réussie.
+- Sections de l'interface : identifiants uniques.
+- Quatre affiches et quatre réponses métier référencées : présentes.
+- Sept supports téléchargeables : présents.
+- Aucun fichier local de permissions de chantier versionné.
+- Fichiers temporaires, dépendances et secrets .env exclus du dépôt.
+
+Nettoyage :
+- README réorganisé avec liens public, développement local et aperçu local
+  immédiatement visibles, ainsi que les instructions de publication.
+- Avertissement obsolète sur la lecture du guide Word retiré du README.
+- Mention de brouillon retirée de la présentation des ressources du site.
+- Commentaires redondants supprimés ; commentaires utiles à la sécurité
+  et au fonctionnement du plein écran conservés en français.
+- Import Python inutilisé supprimé.
+- Compilation GitHub Actions limitée à contents: read.
+- Droits pages: write et id-token: write réservés à la publication.
+- Identifiants Git non persistés après checkout.
+
+Limites :
+- Aucun navigateur connecté : les interactions et le rendu visuel ne sont
+  pas déclarés revérifiés lors de ce contrôle.
+- Les statuts éditoriaux et les contrôles humains figurant dans les documents
+  pédagogiques d'origine sont conservés. Ce contrôle technique ne vaut pas
+  validation fiscale ou commerciale des exemples.

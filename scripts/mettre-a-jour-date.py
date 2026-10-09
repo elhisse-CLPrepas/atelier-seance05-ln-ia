@@ -1,6 +1,5 @@
 """Synchronise la date de séance dans les supports éditables et les PDF."""
 from pathlib import Path
-import copy
 import re
 import zipfile
 import xml.etree.ElementTree as ET

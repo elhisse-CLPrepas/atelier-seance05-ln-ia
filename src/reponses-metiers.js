@@ -25,8 +25,7 @@ function inline(text) {
     .replace(/`([^`]+)`/g,'<code>$1</code>');
 }
 
-// Render the small Markdown subset used by the four teaching documents.
-// Escape raw HTML before formatting; external links must use HTTP(S).
+// Le HTML est échappé ; seuls les liens HTTP(S) sont autorisés.
 export function renderMarkdown(markdown) {
   const lines = markdown.replace(/\r\n/g,'\n').split('\n');
   const html = [];
@@ -81,7 +80,6 @@ export function renderMetier(index) {
   const filename=files[index];
   const raw=sources[`../03-reponses-prompts-metiers/${filename}`];
   if(typeof raw!=='string')throw new Error(`Réponse métier absente : ${filename}`);
-  // Include the fictional source notes for Manager before showing the analysis.
   const marker=index===2?'## Notes de réunion':'## Réponse obtenue';
   const start=raw.indexOf(marker);
   const body=start>=0?raw.slice(start):raw;

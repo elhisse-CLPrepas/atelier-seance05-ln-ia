@@ -57,7 +57,7 @@ export function mountPosters() {
     img.src = url(poster);
     img.alt = poster.alt;
     dialog.querySelector('#posterDownload').href = url(poster);
-    // Keep the dialog inside the fullscreen element so it remains visible during projection.
+    // La modale doit rester dans l'élément projeté en plein écran.
     (document.fullscreenElement || document.body).append(dialog);
     dialog.showModal();
     dialog.querySelector('.poster-scroll').scrollTo(0,0);

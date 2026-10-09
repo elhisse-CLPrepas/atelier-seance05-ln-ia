@@ -1,64 +1,101 @@
-# Atelier LN-IA — Séance 05 — Module 02
+# Atelier LN-IA — Séance 05 — Bases du prompt
 
-**Date de la séance :** vendredi 09 OCTOBRE 2026
+**Module 02 · Semaine 03 · Vendredi 09 OCTOBRE 2026**
 
-[Site public](https://elhisse-clprepas.github.io/atelier-seance05-ln-ia/) · [Dépôt GitHub](https://github.com/elhisse-CLPrepas/atelier-seance05-ln-ia)
+## Ouvrir l’atelier
 
-## Objectif
-Apprendre à transformer une demande vague en prompt structuré : **Rôle + Contexte + Objectif + Contraintes + Format + Contrôle humain**. Base pédagogique : `public/sources/support-seance-05-bases-du-prompt-candidats.md`.
+| Accès | Lien |
+|---|---|
+| **Site public — GitHub Pages** | **[Ouvrir la présentation en ligne](https://elhisse-clprepas.github.io/atelier-seance05-ln-ia/)** |
+| **Site local — développement** | **[http://localhost:5173/](http://localhost:5173/)** — après `npm run dev` |
+| Aperçu local de production | [http://localhost:4173/](http://localhost:4173/) — après `npm run build` puis `npm run preview` |
+| Exemples selon votre métier | [Consulter les quatre prompts et leurs réponses](https://elhisse-clprepas.github.io/atelier-seance05-ln-ia/#exemples) |
+| Code et supports | [Dépôt GitHub](https://github.com/elhisse-CLPrepas/atelier-seance05-ln-ia) |
 
-## Installer et démarrer avec VS Code
-1. Extraire l'archive ZIP et ouvrir ce dossier dans VS Code.
-2. Installer Node.js 20.19+ ou 22.12+ si nécessaire.
-3. Ouvrir le terminal VS Code dans ce dossier.
-4. Exécuter `npm ci`, puis `npm run dev` (sous PowerShell, utiliser `npm.cmd` si `npm.ps1` est bloqué).
-5. Ouvrir l'adresse locale affichée (habituellement http://localhost:5173).
+## Objectif pédagogique
 
-## Produire la version publiable
-- `npm run build` génère le dossier `dist/`.
-- `npm run preview` vérifie localement la version de production.
+Transformer une demande vague en prompt utile et contrôlable : **Rôle + Contexte + Objectif + Contraintes + Format + Contrôle humain**.
 
-## Parcours conseillé : 90 minutes (modifiable)
+Le [support candidat](public/sources/support-seance-05-bases-du-prompt-candidats.md) constitue la référence pédagogique de la séance.
+
+## Installer et démarrer
+
+Prérequis : **Node.js 22.12 ou supérieur** et npm.
+
+1. Cloner le dépôt ou télécharger son archive, puis ouvrir le dossier dans VS Code.
+2. Installer les dépendances et démarrer le serveur :
+
+```sh
+npm ci
+npm run dev
+```
+
+Ouvrir l’adresse indiquée dans le terminal, habituellement **http://localhost:5173/**. Sous PowerShell, utiliser `npm.cmd` à la place de `npm` si le lanceur `npm.ps1` est bloqué.
+
+Pour vérifier la version de production :
+
+```sh
+npm run build
+npm run preview
+```
+
+La compilation produit `dist/`. L’aperçu démarre habituellement sur **http://localhost:4173/** ; un autre port peut être proposé si celui-ci est occupé.
+
+## Contenu de l’atelier
+
+- 20 diapositives, dont quatre affiches, avec navigation au clavier et plein écran.
+- Six fiches sur les composantes du prompt : anti-exemple, exemple et conseil.
+- Quatre cas métier : formateur, entrepreneur, manager et comptable.
+- Réponses détaillées, tableaux, points de contrôle et téléchargement Markdown dans chaque onglet métier.
+- Deux prompts de démonstration à copier dans un outil IA.
+- Huit flashcards interactives.
+- Générateur local de prompt V1 et checklist de préparation à la séance 06.
+- Galerie d’affiches avec agrandissement et téléchargement.
+- Supports téléchargeables en Markdown, HTML, PDF et Word.
+
+Le site ne nécessite ni compte, ni clé API. Il n’appelle aucun service IA et n’envoie pas les champs du générateur à un serveur. La copie utilise le presse-papiers du navigateur ; la projection utilise son mode plein écran.
+
+## Parcours conseillé — 90 minutes
+
 | Phase | Durée | Activité |
 |---|---:|---|
-| Accueil, objectifs et diagnostic | 10 min | Demande vague et discussion |
-| Formule et présentation | 20 min | Six composantes du prompt |
-| Démonstrations | 15 min | Même mission, deux prompts |
-| Exemples professionnels | 15 min | Quatre cas commentés |
+| Accueil et diagnostic | 10 min | Identifier une demande vague |
+| Formule et présentation | 20 min | Découvrir les six composantes |
+| Démonstrations | 15 min | Comparer deux prompts pour une même mission |
+| Exemples professionnels | 15 min | Examiner les quatre cas métier et leurs réponses |
 | Production individuelle | 20 min | Construire `prompt-simple-v1.md` |
-| Flashcards et préparation S06 | 10 min | Auto-contrôle et preuves |
+| Révision et préparation S06 | 10 min | Flashcards, auto-contrôle et conservation des preuves |
 
-## Fonctionnalités
-- 20 diapositives navigables et projetables en plein écran, dont quatre affiches intégrées aux étapes pédagogiques.
-- Galerie des quatre affiches avec agrandissement, lecture en taille réelle et téléchargement PNG.
-- Six fiches détaillées (anti-exemple, exemple, conseil).
-- Quatre cas professionnels (formateur, entrepreneur, manager, comptable).
-- Réponses pédagogiques intégrées aux quatre onglets métier, avec tableaux, points de contrôle et téléchargement Markdown. Les fichiers de `03-reponses-prompts-metiers/` alimentent directement le site lors de la compilation.
-- Deux prompts à copier pour une démonstration dans une IA externe (aucun appel IA direct).
-- Huit flashcards interactives.
-- Générateur local de prompt et téléchargement du fichier Markdown V1.
-- Préparation de la séance 06 et checklist exportable.
-- Les sept fichiers de l'archive source sont conservés dans `public/sources/`.
+## Fichiers et livrables
 
-## GitHub Pages
-La publication s'effectue automatiquement à chaque push sur `main` avec GitHub Actions via `.github/workflows/deploy.yml`. Dans **Settings > Pages > Build and deployment**, la source est **GitHub Actions**. Le workflow installe les dépendances verrouillées avec `npm ci`, compile le site et publie uniquement `dist/`. Il configure automatiquement le `base` Vite sur `/atelier-seance05-ln-ia/`. Le workflow peut aussi être lancé manuellement depuis l'onglet Actions.
+| Dossier | Contenu |
+|---|---|
+| `src/` | Interface, présentation, affiches et affichage des réponses |
+| `public/sources/` | Sept supports pédagogiques téléchargeables |
+| `public/affiches/` | Quatre affiches utilisées dans la présentation |
+| `02-prompts/` | Exemples V1/V2, réponse de test, bilan et préparation S06 |
+| `03-reponses-prompts-metiers/` | Prompts et réponses des quatre cas métier |
+| `docs/` | Comptes rendus des contrôles et des mises à jour |
+| `scripts/` | Utilitaires de maintenance des documents |
 
-Le site est partagé à l'adresse https://elhisse-clprepas.github.io/atelier-seance05-ln-ia/. Le dépôt versionne le code, les supports et les affiches ; `node_modules/`, `dist/` et les contrôles temporaires de `tmp/` sont exclus.
+Les fichiers Markdown des réponses métier alimentent directement la présentation lors de la compilation. Modifier le fichier correspondant dans `03-reponses-prompts-metiers/`, puis reconstruire le site pour actualiser la réponse affichée et téléchargée.
 
-## Assurance qualité humaine
-Le site ne vérifie pas la véracité du contenu produit par un outil IA. Les exemples sont pédagogiques. Avant diffusion publique, relire les sources, vérifier les dates, les informations réglementaires et les liens. Le DOCX fourni dans les sources peut ne pas être lisible comme document Office standard ; la référence de contenu principale est le Markdown.
+Livrable de la séance 05 : **`02-prompts/prompt-simple-v1.md`**. Pour préparer la suite, conserver `reponse-test-v1.md`, corriger le prompt dans `prompt-simple-v2.md` et documenter les différences dans `bilan-comparatif.md`. Le prompt structuré de la séance 06 est conservé séparément dans `prompt-structure-v1.md`.
 
-## Livrables candidat
-`02-prompts/prompt-simple-v1.md` et, en vue de S06, `02-prompts/reponse-test-v1.md`, puis `02-prompts/prompt-simple-v2.md` et `02-prompts/bilan-comparatif.md`.
+Les affiches du module indiquent **Semaine 03**. Les copies utilisées par le site se trouvent dans `public/affiches/` ; la racine conserve les fichiers correspondants.
 
-Les affiches annoncent également `02-prompts/prompt-structure-v1.md` pour la séance 06 : il s'agit du prompt structuré construit à partir des essais et corrections du prompt simple.
+## Publication automatique — GitHub Pages
 
-## Affiches dans la présentation
-Les quatre PNG sont synchronisés entre la racine et `public/affiches/` avec des noms adaptés au Web. Ils sont inclus dans `dist/` lors de la compilation. La présentation porte la date du 09 OCTOBRE 2026 ; la nouvelle affiche « Module 02, Semaine 03 » est utilisée telle que fournie. Les supports Markdown, HTML, Word et PDF, les flashcards et les exports portent également la date de la séance.
+**Adresse à partager : [https://elhisse-clprepas.github.io/atelier-seance05-ln-ia/](https://elhisse-clprepas.github.io/atelier-seance05-ln-ia/)**
 
-- Diapositive 1 : affiche datée de la séance 05, pour l'ouverture du 09 OCTOBRE 2026.
-- Diapositive 3 : nouvelle affiche « Module 02, Semaine 03 », centrée sur les séances 05 et 06. Elle remplace l'ancienne affiche qui indiquait une semaine incorrecte, également retirée des fichiers téléchargeables.
-- Diapositive 16 : affiche de synthèse de la séance 05, datée du 09 OCTOBRE 2026, avant le livrable.
-- Diapositive 19 : affiche du parcours des séances 05 à 08, corrigée en « Semaine 03 », pour préparer la suite. La date du 09 OCTOBRE 2026 est conservée.
+Chaque push sur `main` déclenche [.github/workflows/deploy.yml](.github/workflows/deploy.yml). La compilation installe les dépendances verrouillées avec `npm ci` et configure le chemin `/atelier-seance05-ln-ia/`. Une étape distincte publie uniquement `dist/` sur GitHub Pages.
 
-Les affiches verticales sont affichées entières, sans recadrage. Le bouton « Agrandir l'affiche » ouvre une vue avec lecture en taille réelle et défilement ; Échap ou « Fermer » permet de revenir à la présentation. Une galerie accessible par le menu « Affiches » rassemble les quatre fichiers. L'affiche de cadrage de la séance indique désormais « Semaine 03 ».
+La compilation dispose d’un accès en lecture au dépôt. Seule l’étape de publication reçoit les droits `pages: write` et `id-token: write`, nécessaires à GitHub Pages. Les identifiants Git ne sont pas conservés après le checkout.
+
+Dans **Settings > Pages**, la source doit rester **GitHub Actions**. Le déploiement peut également être relancé depuis [l’onglet Actions](https://github.com/elhisse-CLPrepas/atelier-seance05-ln-ia/actions).
+
+`node_modules/`, `dist/`, `tmp/`, les journaux et les fichiers `.env` sont exclus du versionnement.
+
+## Contrôle humain
+
+Les réponses sont des exemples pédagogiques. Les cas fictifs et les informations à compléter sont signalés. Avant une utilisation réelle, vérifier les faits, les coordonnées et les conditions commerciales ; pour la TVA, consulter les textes fiscaux en vigueur dans le pays concerné. Les contrôles techniques du site ne remplacent pas cette validation humaine.
