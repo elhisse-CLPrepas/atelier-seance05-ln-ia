@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Affiche séance 05 - Module 02 - Bases du prompt - 09 OCTOBRE 2026</title>
+  <style>
+    :root {
+      --night: #071626;
+      --ink: #102033;
+      --blue: #123d68;
+      --gold: #c8a24a;
+      --paper: #f6f8fb;
+      --white: #ffffff;
+      --line: rgba(255,255,255,.2);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: #dfe5ed;
+      color: var(--ink);
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    .poster {
+      width: 1123px;
+      height: 1588px;
+      margin: 0 auto;
+      background: var(--paper);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero {
+      min-height: 372px;
+      padding: 34px 66px 26px;
+      color: var(--white);
+      background:
+        linear-gradient(135deg, rgba(7,22,38,.96), rgba(18,61,104,.94)),
+        radial-gradient(circle at 75% 25%, rgba(200,162,74,.28), transparent 32%);
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px);
+      background-size: 42px 42px;
+      opacity: .45;
+      pointer-events: none;
+    }
+
+    .topbar,
+    .hero-main,
+    .hero-footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      margin-bottom: 28px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+      background: rgba(255,255,255,.94);
+      border-radius: 8px;
+      padding: 8px;
+    }
+
+    .brand-text {
+      font-size: 25px;
+      line-height: 1.22;
+      font-weight: 700;
+    }
+
+    .brand-text span {
+      display: block;
+      font-size: 15px;
+      font-weight: 500;
+      color: rgba(255,255,255,.76);
+      margin-top: 4px;
+    }
+
+    .session-badge {
+      border: 1px solid rgba(200,162,74,.75);
+      color: #f3d98b;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-size: 18px;
+      font-weight: 700;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .kicker {
+      color: #f2d98a;
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin: 0 0 12px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 55px;
+      line-height: .98;
+      letter-spacing: 0;
+      max-width: 900px;
+    }
+
+    .subtitle {
+      max-width: 850px;
+      margin: 16px 0 0;
+      font-size: 23px;
+      line-height: 1.32;
+      color: rgba(255,255,255,.88);
+      font-weight: 500;
+    }
+
+    .hero-footer {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-top: 24px;
+    }
+
+    .formula,
+    .promise {
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+      font-size: 18px;
+      line-height: 1.35;
+      color: rgba(255,255,255,.86);
+    }
+
+    .formula strong,
+    .promise strong {
+      color: #f3d98b;
+    }
+
+    .content {
+      padding: 24px 66px 28px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 22px;
+      line-height: 1.1;
+      color: var(--blue);
+      font-weight: 800;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .panel {
+      background: var(--white);
+      border: 1px solid #dce3ea;
+      border-radius: 8px;
+      padding: 17px 26px;
+      box-shadow: 0 10px 24px rgba(16,32,51,.08);
+    }
+
+    .panel.gold {
+      border-top: 7px solid var(--gold);
+    }
+
+    .panel.blue {
+      border-top: 7px solid var(--blue);
+    }
+
+    .lead {
+      font-size: 19px;
+      line-height: 1.31;
+      margin: 0;
+    }
+
+    .agenda {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .agenda li {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 12px;
+      align-items: start;
+      font-size: 19px;
+      line-height: 1.18;
+    }
+
+    .num {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--blue);
+      color: var(--white);
+      font-weight: 800;
+      font-size: 17px;
+    }
+
+    .agenda strong {
+      color: var(--blue);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .step {
+      min-height: 76px;
+      border: 1px solid #d8e0e7;
+      border-radius: 8px;
+      padding: 11px 13px;
+      background: #fbfcfe;
+      font-size: 15px;
+      line-height: 1.25;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .step span {
+      display: block;
+      color: var(--gold);
+      font-size: 15px;
+      margin-bottom: 4px;
+      font-weight: 900;
+    }
+
+    .quote {
+      background: var(--night);
+      color: var(--white);
+      padding: 18px 26px;
+      border-radius: 8px;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .quote-text {
+      font-size: 23px;
+      line-height: 1.18;
+      font-weight: 800;
+      margin: 0;
+    }
+
+    .quote-text span {
+      color: #f3d98b;
+    }
+
+    .deliverable {
+      font-size: 18px;
+      line-height: 1.35;
+      border-left: 5px solid var(--gold);
+      padding-left: 22px;
+    }
+
+    .deliverable code {
+      display: inline-block;
+      margin-top: 9px;
+      background: rgba(255,255,255,.1);
+      color: #f6d878;
+      padding: 7px 9px;
+      border-radius: 5px;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 16px;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: center;
+      border-top: 1px solid #d8e0e7;
+      padding-top: 12px;
+      color: #4b5a6b;
+      font-size: 15px;
+      line-height: 1.3;
+    }
+
+    .footer strong {
+      color: var(--blue);
+    }
+
+    @media print {
+      body { background: var(--white); }
+      .poster { width: 1123px; height: 1588px; }
+      @page { size: 1123px 1588px; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+  <main class="poster">
+    <section class="hero">
+      <div class="topbar">
+        <div class="brand">
+          <img src="../logo-ln-ia.png" alt="Logo LN-IA">
+          <div class="brand-text">
+            Atelier LN-IA
+            <span>Challenge 100 jours - Formation IA pratique</span>
+          </div>
+        </div>
+        <div class="session-badge">Module 02<br>Séance 05</div>
+      </div>
+
+      <div class="hero-main">
+        <p class="kicker">Bases du prompt · <time class="date-seance" datetime="2026-10-09">09 OCTOBRE 2026</time></p>
+        <h1>Passer du flou à une consigne claire</h1>
+        <p class="subtitle">
+          Apprendre à formuler une demande utile, contrôlable et améliorable pour produire avec l'IA.
+        </p>
+      </div>
+
+      <div class="hero-footer">
+        <div class="formula">
+          <strong>Formule :</strong><br>
+          Rôle + Contexte + Objectif + Contraintes + Format + Contrôle
+        </div>
+        <div class="promise">
+          <strong>Réflexe Module 02 :</strong><br>
+          cadrer avant de demander, produire une première version, corriger avant de valider.
+        </div>
+      </div>
+    </section>
+
+    <section class="content">
+      <div class="grid">
+        <article class="panel gold">
+          <h2 class="section-title">Objectif de la séance</h2>
+          <p class="lead">
+            Comprendre pourquoi une demande vague produit souvent une réponse vague, puis transformer cette demande en prompt simple et exploitable.
+          </p>
+        </article>
+
+        <article class="panel blue">
+          <h2 class="section-title">Objectif du Module 02</h2>
+          <p class="lead">
+            Entrer dans le pilotage de l'IA par les prompts : demander clairement, contrôler la réponse et classer les preuves de travail.
+          </p>
+        </article>
+      </div>
+
+      <article class="panel">
+        <h2 class="section-title">Ordre du jour</h2>
+        <ol class="agenda">
+          <li><span class="num">1</span><span><strong>Ouverture :</strong> parler à l'IA comme à un assistant de production.</span></li>
+          <li><span class="num">2</span><span><strong>Démonstration :</strong> comparer une demande vague et une demande cadrée.</span></li>
+          <li><span class="num">3</span><span><strong>Exercice 1 :</strong> identifier une demande vague liée à son activité.</span></li>
+          <li><span class="num">4</span><span><strong>Exercice 2 :</strong> transformer la demande en prompt clair.</span></li>
+          <li><span class="num">5</span><span><strong>Livrable :</strong> créer ou compléter son premier fichier de prompt.</span></li>
+        </ol>
+      </article>
+
+      <article class="panel">
+        <h2 class="section-title">Les 6 éléments à installer</h2>
+        <div class="steps">
+          <div class="step"><span>01</span>Donner un rôle à l'IA</div>
+          <div class="step"><span>02</span>Présenter le contexte</div>
+          <div class="step"><span>03</span>Préciser l'objectif</div>
+          <div class="step"><span>04</span>Ajouter les contraintes</div>
+          <div class="step"><span>05</span>Fixer le format attendu</div>
+          <div class="step"><span>06</span>Garder le contrôle humain</div>
+        </div>
+      </article>
+
+      <section class="quote">
+        <p class="quote-text">
+          Un prompt n'est pas une question jetée à l'IA.<br>
+          <span>C'est une consigne de production.</span>
+        </p>
+        <div class="deliverable">
+          Livrable séance 05<br>
+          <code>02-prompts/prompt-simple-v1.md</code>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div><strong>LN-IA :</strong> L'IA propose. L'humain contrôle. L'atelier organise. Le livrable prouve.</div>
+        <div>Statut : BROUILLON - À RELIRE</div>
+      </footer>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,50 @@
+RAPPORT DE CONTRÔLE — ATELIER LN-IA SÉANCE 05
+Date : 9 octobre 2026
+
+PÉRIMÈTRE
+Lecture du README.md, du support pédagogique Markdown, du code JavaScript,
+de la feuille de style, de la configuration Vite et du workflow GitHub Pages.
+Les documents binaires n'ont pas fait l'objet d'une relecture éditoriale ou visuelle.
+
+EXÉCUTION ET RÉSULTATS
+- Node.js installé : v24.12.0. Installation npm réussie via npm.cmd.
+- npm.ps1 est bloqué par la politique PowerShell ; npm.cmd fonctionne.
+- package-lock.json créé pour figer les versions installées.
+- Workflow GitHub Pages : npm install remplacé par npm ci pour réutiliser ce verrouillage.
+- npm run build : réussi avec Vite 6.4.4 ; version publiable dans dist/.
+- node --check src/main.js : réussi.
+- Serveur de développement : http://127.0.0.1:5173/ répond HTTP 200.
+- Aperçu de production : http://127.0.0.1:4173/ répond HTTP 200.
+- JavaScript et CSS de production : HTTP 200.
+- Les sept sources : HTTP 200 et empreintes SHA-256 identiques entre public/sources et dist/sources.
+- Lecture du code : 16 diapositives, six composantes, quatre cas professionnels,
+  huit flashcards, générateur Markdown et export de checklist présents.
+
+LIVRABLES PRODUITS
+02-prompts/prompt-simple-v1.md
+02-prompts/reponse-test-v1.md
+02-prompts/prompt-simple-v2.md
+02-prompts/bilan-comparatif.md
+02-prompts/preparation-seance-06.md
+
+Cas retenu : invitation WhatsApp à un atelier IA pour adultes débutants.
+Les essais sont produits par l'assistant de cette conversation, sans service IA externe.
+La V2 corrige une hypothèse de V1 concernant le canal d'inscription.
+Ces exemples doivent être adaptés et validés par l'organisateur.
+
+LIMITES ET SUITES
+- Aucun navigateur disponible dans la session : interactions, téléchargement,
+  presse-papiers, plein écran, affichage mobile et accessibilité non validés en exécution.
+- Le support Markdown porte le statut BROUILLON - À RELIRE.
+- Pas de dépôt Git local : aucune publication GitHub Pages réalisée.
+  Pour publier, créer ou rattacher un dépôt, pousser le projet et activer Pages
+  avec GitHub Actions conformément au README. Le workflow distant n'a pas été exécuté.
+- Les dates, modalités, liens et places de l'invitation restent à confirmer par une personne.
+- Les sources originales sont préservées ; leur conservation ne constitue pas
+  une validation de leur contenu ni de leur rendu Office/PDF.
+
+COMMANDES À UTILISER SOUS POWERSHELL
+npm.cmd ci
+npm.cmd run dev
+npm.cmd run build
+npm.cmd run preview

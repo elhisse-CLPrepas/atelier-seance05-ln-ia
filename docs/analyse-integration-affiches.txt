@@ -1,0 +1,45 @@
+ANALYSE ET INTÉGRATION DES QUATRE AFFICHES
+9 octobre 2026
+
+ANALYSE
+Les quatre visuels partagent la charte bleu nuit, or et blanc du site LN-IA.
+Leur format vertical et la densité des textes nécessitent un affichage entier
+avec une possibilité de lecture agrandie ; un recadrage en bannière supprimerait du contenu.
+
+1. Bases du prompt _ créer avec l’IA.png
+Affiche datée vendredi 9 octobre 2026 : ouverture de la séance 05.
+2. Affiche LN-IA _ Module 02, Semaine 03.png
+Cadrage de la progression entre séances 05 et 06 en semaine 03.
+Remplace l'ancienne affiche à la demande de l'utilisateur.
+3. Bases du prompt – Séance 05.png
+Version non datée : synthèse des acquis avant la production du livrable.
+4. Affiche pédagogique IA _ prompts et dialogue.png
+Vue d'ensemble des séances 05 à 08 : transition vers la suite du module.
+
+COHÉRENCE PÉDAGOGIQUE
+Le message central et les six composantes correspondent au support Markdown.
+La version datée et la version non datée ont des usages distincts.
+Les deux affiches du module couvrent des périmètres distincts, 05-06 et 05-08.
+L'affiche de cadrage indique désormais « Semaine 03 », en cohérence avec le
+fichier semaine-03&04-v1.md cité par le support. L'affiche du parcours
+05-08 a également été corrigée et indique « Semaine 03 ». La date du
+09 OCTOBRE 2026 est conservée. Les anciennes copies Web sont supprimées.
+Le prompt structuré V1 de S06 est expliqué comme un livrable distinct de la V2
+du prompt simple, préparé par le protocole de test et de correction existant.
+
+INTÉGRATION
+- 20 diapositives au total ; affiches aux positions 1, 3, 16 et 19.
+- Affichage entier avec object-fit: contain ; originaux inchangés.
+- Vue modale native avec fermeture, retour du focus, lecture en taille réelle
+  et défilement ; disponible également depuis la présentation en plein écran.
+- Galerie des quatre affiches avec descriptions accessibles et téléchargements.
+- Chemins basés sur BASE_URL pour les sous-dossiers GitHub Pages.
+- Originaux à la racine, copies Web dans public/affiches, incluses dans dist/affiches.
+
+CONTRÔLES
+- Vérification de syntaxe JavaScript réussie.
+- Compilation Vite réussie.
+- Les copies de production des quatre PNG ont les mêmes empreintes SHA-256.
+- Les quatre images sont servies en HTTP 200 avec le type image/png.
+- Aucun navigateur connecté : rendu visuel, zoom, navigation et plein écran
+  restent à vérifier manuellement ; ils ne sont pas déclarés validés.

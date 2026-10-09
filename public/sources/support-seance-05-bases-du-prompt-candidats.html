@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Séance 05 - Bases du prompt - 09 OCTOBRE 2026</title>
+  <style>
+    :root {
+      --navy: #071d3a;
+      --blue: #0e3a66;
+      --teal: #0f8b8d;
+      --gold: #c79a35;
+      --ink: #10233f;
+      --muted: #607086;
+      --line: #dbe4ef;
+      --soft: #f5f8fc;
+      --paper: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #edf2f7;
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(980px, calc(100% - 32px));
+      margin: 28px auto;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 45px rgba(7, 29, 58, 0.12);
+    }
+
+    header {
+      padding: 28px 38px 32px;
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(199, 154, 53, 0.22), transparent 32%),
+        linear-gradient(120deg, var(--navy), var(--blue));
+      border-bottom: 5px solid var(--gold);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 26px;
+    }
+
+    .brand img {
+      width: 84px;
+      height: 84px;
+      object-fit: contain;
+      padding: 8px;
+      background: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.42);
+    }
+
+    .brand-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #f4d98c;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      line-height: 1.22;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4.8vw, 3.45rem);
+      text-transform: uppercase;
+    }
+
+    header h2 {
+      margin-top: 8px;
+      color: #f5d98a;
+      font-size: clamp(1.1rem, 2.2vw, 1.55rem);
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 18px;
+      margin-top: 22px;
+      font-size: 0.97rem;
+    }
+
+    .meta div {
+      padding: 10px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    main {
+      padding: 34px 38px 42px;
+    }
+
+    section {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    section:first-child {
+      padding-top: 0;
+    }
+
+    section:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    h3 {
+      margin-bottom: 14px;
+      color: var(--navy);
+      font-size: 1.35rem;
+    }
+
+    p {
+      margin: 10px 0;
+    }
+
+    ul {
+      margin: 12px 0 0 20px;
+      padding: 0;
+    }
+
+    li {
+      margin: 6px 0;
+    }
+
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .method-step {
+      min-height: 104px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      background: var(--soft);
+    }
+
+    .method-step strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--teal);
+      font-size: 0.92rem;
+      text-transform: uppercase;
+    }
+
+    .copy-block {
+      margin: 16px 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--soft);
+    }
+
+    .copy-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 42px;
+      padding: 8px 10px 8px 14px;
+      color: #fff;
+      background: var(--navy);
+    }
+
+    .copy-label {
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .copy-button {
+      min-width: 82px;
+      padding: 8px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.36);
+      border-radius: 6px;
+      color: #fff;
+      background: var(--teal);
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .copy-button:hover,
+    .copy-button:focus {
+      background: #0b7375;
+      outline: 2px solid #f5d98a;
+      outline-offset: 2px;
+    }
+
+    pre {
+      margin: 0;
+      padding: 18px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      color: #17233a;
+      font: 0.96rem/1.55 Consolas, "Courier New", monospace;
+    }
+
+    .note {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-left: 4px solid var(--gold);
+      background: #fff8e6;
+      color: #4f3a07;
+      font-weight: 700;
+    }
+
+    footer {
+      padding: 20px 38px;
+      color: #fff;
+      background: var(--navy);
+      border-top: 5px solid var(--gold);
+    }
+
+    footer p {
+      margin: 4px 0;
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        width: 100%;
+        margin: 0;
+        border: 0;
+      }
+
+      header,
+      main,
+      footer {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .brand {
+        align-items: flex-start;
+      }
+
+      .brand img {
+        width: 68px;
+        height: 68px;
+      }
+
+      .meta,
+      .method-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        width: 100%;
+        margin: 0;
+        border: 0;
+        box-shadow: none;
+      }
+
+      .copy-button {
+        display: none;
+      }
+
+      .copy-bar {
+        color: var(--ink);
+        background: #eef3f8;
+      }
+
+      section {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <article class="page">
+    <header>
+      <div class="brand">
+        <img src="../logo-ln-ia.png" alt="Logo LN-IA">
+        <div>
+          <div class="brand-name">Atelier LN-IA</div>
+          <h1>Séance 05</h1>
+          <h2>Module 02 - Bases du prompt</h2>
+        </div>
+      </div>
+
+      <div class="meta" aria-label="Informations du support">
+        <div><strong>Date de la séance :</strong> <time class="date-seance" datetime="2026-10-09">vendredi 09 OCTOBRE 2026</time></div>
+        <div><strong>Projet :</strong> Challenge 100 jours - Formation IA pratique</div>
+        <div><strong>Atelier :</strong> LN-IA - Apprendre à produire avec l'IA</div>
+        <div><strong>Module :</strong> Prompts, dialogue IA et premières corrections</div>
+        <div><strong>Public :</strong> candidats</div>
+        <div><strong>Statut :</strong> BROUILLON - À RELIRE</div>
+        <div><strong>Source :</strong> semaine-03&04-v1.md</div>
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <h3>1. Présentation de la séance</h3>
+        <p>La séance 05 ouvre le Module 02 et fait entrer les candidats dans le pilotage de l'IA par les prompts.</p>
+        <p>L'objectif n'est pas d'écrire de belles phrases à l'IA. L'objectif est d'apprendre à formuler une demande claire pour obtenir une production utile, contrôlable et améliorable.</p>
+
+        <div class="copy-block">
+          <div class="copy-bar">
+            <span class="copy-label">Message central</span>
+            <button class="copy-button" type="button">Copier</button>
+          </div>
+          <pre>Un prompt n'est pas une question jetée à l'IA.
+Un prompt est une consigne de production.</pre>
+        </div>
+      </section>
+
+      <section>
+        <h3>2. Méthode de travail</h3>
+        <p>La méthode de la séance conserve la structure LN-IA : comprendre, produire, contrôler, classer et prouver.</p>
+
+        <div class="method-grid">
+          <div class="method-step">
+            <strong>Comprendre</strong>
+            Partir d'une demande vague et repérer ce qui manque.
+          </div>
+          <div class="method-step">
+            <strong>Produire</strong>
+            Transformer la demande en prompt simple et utilisable.
+          </div>
+          <div class="method-step">
+            <strong>Contrôler</strong>
+            Vérifier que la réponse IA reste utile, claire et exploitable.
+          </div>
+        </div>
+
+        <div class="copy-block">
+          <div class="copy-bar">
+            <span class="copy-label">Formule à retenir</span>
+            <button class="copy-button" type="button">Copier</button>
+          </div>
+          <pre>Rôle + Contexte + Objectif + Contraintes + Format + Contrôle</pre>
+        </div>
+      </section>
+
+      <section>
+        <h3>3. Objectif pédagogique</h3>
+        <p>À la fin de la séance, le candidat doit être capable de :</p>
+        <ul>
+          <li>reconnaître une demande vague ;</li>
+          <li>comprendre pourquoi une demande floue produit souvent une réponse floue ;</li>
+          <li>transformer une demande vague en prompt simple ;</li>
+          <li>préciser le public, le résultat attendu et le format de réponse ;</li>
+          <li>produire un premier fichier de prompt dans son dossier candidat.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>4. Message d'ouverture</h3>
+
+        <div class="copy-block">
+          <div class="copy-bar">
+            <span class="copy-label">Texte d'ouverture</span>
+            <button class="copy-button" type="button">Copier</button>
+          </div>
+          <pre>Aujourd'hui, nous apprenons à parler à l'IA comme à un assistant de production.
+
+Si la demande est floue, la réponse sera souvent floue.
+Si la demande est cadrée, la réponse devient plus utile.</pre>
+        </div>
+
+        <p>Dans l'atelier LN-IA, un prompt sert à produire. Il doit aider l'IA à comprendre le rôle attendu, le contexte, l'objectif, les contraintes, le format de réponse et le contrôle humain nécessaire.</p>
+      </section>
+
+      <section>
+        <h3>5. Démonstration</h3>
+        <p>On part d'une demande vague, puis on la transforme en demande cadrée.</p>
+
+        <div class="copy-block">
+          <div class="copy-bar">
+            <span class="copy-label">Demande vague</span>
+            <button class="copy-button" type="button">Copier</button>
+          </div>
+          <pre>Fais-moi un texte sur l'IA.</pre>
+        </div>
+
+        <div class="copy-block">
+          <div class="copy-bar">
+            <span class="copy-label">Demande cadrée</span>
+            <button class="copy-button" type="button">Copier</button>
+          </div>
+          <pre>Tu es formateur en intelligence artificielle pratique.
+
+Rédige un message WhatsApp court pour annoncer un atelier IA à des débutants.
+
+Le ton doit être clair, motivant et professionnel.
+
+Le message doit contenir :
+- un objectif ;
+- une promesse réaliste ;
+- un appel à l'action.</pre>
+        </div>
+      </section>
+
+      <section>
+        <h3>6. Exercice 1 - Identifier une demande vague</h3>
+        <p>Choisissez une demande vague liée à votre activité.</p>
+
+        <div class="copy-block">
+          <div class="copy-bar">
+            <span class="copy-label">Exemples de demandes vagues</span>
+            <button class="copy-button" type="button">Copier</button>
+          </div>
+          <pre>Aide-moi à écrire un message.
+Fais-moi un document.
+Donne-moi des idées.
+Explique-moi l'IA.
+Prépare-moi un plan.</pre>
+        </div>
+
+        <div class="copy-block">
+          <div class="copy-bar">
+            <span class="copy-label">Réponse candidat</span>
+            <button class="copy-button" type="button">Copier</button>
+          </div>
+          <pre>Ma demande vague :
+...</pre>
+        </div>
+      </section>
+
+      <section>
+        <h3>7. Exercice 2 - Transformer la demande</h3>
+        <p>Complétez le modèle suivant pour passer de l'idée floue à une consigne de production.</p>
+
+        <div class="copy-block">
+          <div class="copy-bar">
+            <span class="copy-label">Modèle de prompt simple</span>
+            <button class="copy-button" type="button">Copier</button>
+          </div>
+          <pre>Rôle :
+Tu es ...
+
+Contexte :
+Je travaille sur ...
+
+Objectif :
+Je veux produire ...
+
+Contraintes :
+- ...
+- ...
+- ...
+
+Format attendu :
+Réponds sous forme de ...
+
+Contrôle :
+Signale les points que je dois vérifier moi-même.</pre>
+        </div>
+      </section>
+
+      <section>
+        <h3>8. Prompt à copier</h3>
+        <p>Ce prompt aide le candidat à améliorer sa demande vague en prompt clair.</p>
+
+        <div class="copy-block">
+          <div class="copy-bar">
+            <span class="copy-label">Prompt d'amélioration</span>
+            <button class="copy-button" type="button">Copier</button>
+          </div>
+          <pre>Tu es un assistant pédagogique du Challenge 100 jours - Formation IA pratique.
+
+Voici ma demande vague :
+[coller ici ma demande vague]
+
+Aide-moi à la transformer en prompt clair et utile.
+
+Le prompt doit contenir :
+1. un rôle pour l'IA ;
+2. un contexte ;
+3. un objectif précis ;
+4. trois contraintes ;
+5. un format attendu ;
+6. une phrase de contrôle humain.
+
+Contraintes :
+- garder mon intention ;
+- rester simple ;
+- ne pas promettre de résultat garanti ;
+- produire une consigne directement utilisable.
+
+Format attendu :
+Prompt amélioré :
+...
+
+Pourquoi ce prompt est meilleur :
+...
+
+Points à vérifier par moi-même :
+...</pre>
+        </div>
+      </section>
+
+      <section>
+        <h3>9. Livrable de la séance</h3>
+        <p>Créer ou compléter le fichier suivant dans le dossier candidat :</p>
+
+        <div class="copy-block">
+          <div class="copy-bar">
+            <span class="copy-label">Fichier à créer</span>
+            <button class="copy-button" type="button">Copier</button>
+          </div>
+          <pre>02-prompts/prompt-simple-v1.md</pre>
+        </div>
+
+        <div class="copy-block">
+          <div class="copy-bar">
+            <span class="copy-label">Structure du livrable</span>
+            <button class="copy-button" type="button">Copier</button>
+          </div>
+          <pre># Prompt simple V1
+
+## Ma demande vague
+...
+
+## Mon prompt amélioré
+...
+
+## Les contraintes ajoutées
+1. ...
+2. ...
+3. ...
+
+## Le format attendu
+...
+
+## Ce que je dois vérifier moi-même
+...</pre>
+        </div>
+      </section>
+
+      <section>
+        <h3>10. Auto-contrôle rapide</h3>
+
+        <div class="copy-block">
+          <div class="copy-bar">
+            <span class="copy-label">Checklist candidat</span>
+            <button class="copy-button" type="button">Copier</button>
+          </div>
+          <pre>[ ] mon prompt donne un rôle à l'IA ;
+[ ] le contexte est compréhensible ;
+[ ] l'objectif est clair ;
+[ ] au moins trois contraintes sont indiquées ;
+[ ] le format attendu est précisé ;
+[ ] je garde le contrôle humain ;
+[ ] le fichier est classé dans mon dossier candidat.</pre>
+        </div>
+      </section>
+
+      <section>
+        <h3>11. Travail après séance</h3>
+
+        <div class="copy-block">
+          <div class="copy-bar">
+            <span class="copy-label">Travail à faire</span>
+            <button class="copy-button" type="button">Copier</button>
+          </div>
+          <pre>[ ] améliorer mon prompt simple avec trois contraintes ;
+[ ] préciser le public concerné ;
+[ ] préciser le résultat attendu ;
+[ ] préciser le format de réponse ;
+[ ] tester le prompt une première fois ;
+[ ] conserver la réponse IA comme preuve de travail.</pre>
+        </div>
+      </section>
+
+      <section>
+        <h3>12. Bonne continuation</h3>
+        <p>La séance 05 prépare la séance 06 : le prompt simple deviendra un prompt structuré, puis une réponse IA à relire et corriger.</p>
+
+        <div class="copy-block">
+          <div class="copy-bar">
+            <span class="copy-label">Message à retenir</span>
+            <button class="copy-button" type="button">Copier</button>
+          </div>
+          <pre>Une demande vague produit souvent une réponse vague.
+Une demande cadrée aide l'IA à produire une réponse utile.
+Le candidat garde toujours le contrôle.</pre>
+        </div>
+
+        <div class="copy-block">
+          <div class="copy-bar">
+            <span class="copy-label">Formule LN-IA</span>
+            <button class="copy-button" type="button">Copier</button>
+          </div>
+          <pre>L'IA propose.
+L'humain contrôle.
+L'atelier organise.
+Le livrable prouve.</pre>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p><strong>Bonne continuation dans le Module 02.</strong></p>
+      <p>Comprendre. Produire. Contrôler. Classer. Prouver.</p>
+    </footer>
+  </article>
+
+  <script>
+    document.querySelectorAll('.copy-block').forEach((block) => {
+      const button = block.querySelector('.copy-button');
+      const pre = block.querySelector('pre');
+
+      button.addEventListener('click', async () => {
+        const originalLabel = button.textContent;
+
+        try {
+          await navigator.clipboard.writeText(pre.textContent.trim());
+          button.textContent = 'Copié';
+        } catch (error) {
+          const selection = window.getSelection();
+          const range = document.createRange();
+          range.selectNodeContents(pre);
+          selection.removeAllRanges();
+          selection.addRange(range);
+          button.textContent = 'Sélectionné';
+        }
+
+        window.setTimeout(() => {
+          button.textContent = originalLabel;
+        }, 1600);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+MISE À JOUR DES SUPPORTS DE LA SÉANCE 05
+Date de séance : vendredi 09 OCTOBRE 2026
+
+Périmètre mis à jour :
+- Site, titre de page, accueil, en-tête, diapositives et flashcards.
+- Générateur : date intégrée au fichier prompt-simple-v1.md téléchargé.
+- Checklist S06 : référence explicite à la séance 05 du 09 OCTOBRE 2026.
+- README et cinq fichiers Markdown dans 02-prompts.
+- Support candidat en Markdown et HTML.
+- Guide Word DOCX : date visible après le titre, contenu pédagogique préservé.
+- Deux PDF : date visible en pied de chaque page, contenu original préservé.
+- Affiche source en HTML et PNG.
+- Quatre affiches intégrées : trois versions datées par édition ImageGen,
+  version d'ouverture déjà correctement datée conservée.
+- Copies des affiches à la racine et dans public/affiches synchronisées.
+- Version publiable dist reconstruite.
+
+Les mentions de date manquante dans les exercices restent des consignes
+pédagogiques, distinctes de la date du support.
+
+Contrôles :
+- Date extraite sur les dix pages des deux PDF ; rendu des dix pages inspecté.
+- Guide DOCX ouvert avec python-docx et rendu en PDF par LibreOffice.
+- Affiches modifiées inspectées visuellement avant copie dans le projet.
+- Vérification de syntaxe JavaScript et compilation Vite.
+
+Outils : ImageGen intégré pour l'ajout de date dans les PNG ; modification
+minimale du XML Office et ajout dans les marges PDF pour préserver le contenu.
+Consigne ImageGen : ajouter uniquement la date exacte 09 OCTOBRE 2026,
+préserver les textes, logos, illustrations, composition et couleurs.
+Le renderer DOCX fourni ne disposait pas de pdf2image ; le rendu a donc été
+effectué avec LibreOffice en mode headless, puis les pages rendues avec PyMuPDF.
